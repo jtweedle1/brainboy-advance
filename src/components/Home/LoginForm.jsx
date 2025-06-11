@@ -2,25 +2,13 @@ import { useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
 export default function LoginForm() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleLogin = async () => {
     setError(null);
-    // Get email from username (to login with username)
-    const { data, error: lookupError } = await supabase
-      .from("profiles")
-      .select("user_id, username, user:auth.users(email)")
-      .eq("username", username)
-      .single();
-
-    if (lookupError || !data?.user?.email) {
-      return setError("Username not found");
-    }
-    const email = data.user.email;
-
-    // Actually sign in with the email and password
+   
     const { error: loginError } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -35,9 +23,9 @@ export default function LoginForm() {
   return (
     <div>
       <input
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         placeholder="Password"

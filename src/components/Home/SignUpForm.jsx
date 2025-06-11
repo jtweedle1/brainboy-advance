@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
+import { useNavigate } from "react-router";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  let navigate = useNavigate();
 
   const handleSignup = async () => {
     setError(null);
@@ -49,6 +51,8 @@ export default function SignUpForm() {
       return setError("Failed to create profile. Please try again.");
     }
     alert("Account created!");
+
+    navigate("/dashboard");
   };
 
   return (

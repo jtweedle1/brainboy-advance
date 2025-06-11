@@ -9,8 +9,10 @@ export default function Home() {
         <h1 className="brainboy-title">BrainBoy</h1>
         <h1 className="advance-title">Advance</h1>
       </div>
-      <SignUpForm />
-      <LoginForm />
+      <div className="forms-container">
+        <SignUpForm />
+        <LoginForm />
+      </div>
     </>
   );
 }

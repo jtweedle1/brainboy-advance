@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+body {
+  @apply font-mono text-green-950 bg-green-50;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+}

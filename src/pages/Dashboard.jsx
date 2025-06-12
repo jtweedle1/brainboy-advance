@@ -1,4 +1,5 @@
 import { useAuth } from "../contexts/AuthContext";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   const { user, loading, profile } = useAuth();
@@ -8,7 +9,9 @@ export default function Dashboard() {
   return (
     <div>
       <h1>Welcome, {profile.username}!</h1>
-      <p>Email: {user.email}</p>
+      <div className="dashboard-button">
+        <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">New quest</button>
+      </div>
     </div>
   );
 }
